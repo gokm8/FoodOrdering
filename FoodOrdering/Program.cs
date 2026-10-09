@@ -1,10 +1,16 @@
+using FoodOrdering.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+var conString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string not found.");
+builder.Services.AddDbContext<FoodOrderingDbContext>(opt =>
+    opt.UseSqlServer(conString));
 
 var app = builder.Build();
 
