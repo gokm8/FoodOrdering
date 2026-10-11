@@ -1,0 +1,20 @@
+@host = https://localhost:7143
+
+### Get all menu items
+GET {{host}}/api/menu
+Accept: application/json
+
+### Get one menu item
+GET {{host}}/api/menu/2
+Accept: application/json
+
+### Post a menu item
+POST {{host}}/api/menu
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Pizza",
+  "description": "Pizza med ost og salat",
+  "price": 89.00
+}
