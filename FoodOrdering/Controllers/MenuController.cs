@@ -28,5 +28,18 @@ namespace FoodOrdering.Controllers
             return Ok(menu);
         }
     
+        //GET /api/menu/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<MenuItem>> GetMenuItem(int id)
+        {
+            var menuItem = await _context.MenuItems.FindAsync(id);
+
+            if (menuItem == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(menuItem);
+        }
     }
 }
