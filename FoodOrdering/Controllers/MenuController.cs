@@ -41,5 +41,28 @@ namespace FoodOrdering.Controllers
 
             return Ok(menuItem);
         }
+
+        // HTTP PUT Request
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateMenuItem(int id, MenuItem menuItem)
+        {
+            // Find the menu in the db
+            var existingItem = await _context.MenuItems.FindAsync(id);
+
+            if (existingItem == null)
+            {
+                return NotFound();
+            }
+
+            // Update properties of the menu
+            existingItem.Name = menuItem.Name;
+            existingItem.Description = menuItem.Description;
+            existingItem.Price = menuItem.Price;
+
+            // Save changes in the db
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
