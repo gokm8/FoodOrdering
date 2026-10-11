@@ -19,7 +19,7 @@ namespace FoodOrdering.Controllers
             _context = context;
         }
 
-        // HTTP GET Request
+        // GET /api/menu
         [HttpGet]
         public async Task<ActionResult<List<MenuItem>>> GetMenuItems()
         {
