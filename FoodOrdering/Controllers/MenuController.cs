@@ -21,7 +21,7 @@ namespace FoodOrdering.Controllers
 
         // HTTP GET Request
         [HttpGet]
-        public async Task<ActionResult<List<MenuItem>>> Get()
+        public async Task<ActionResult<List<MenuItem>>> GetMenuItems()
         {
             var menu = await _context.MenuItems.ToListAsync();
 
