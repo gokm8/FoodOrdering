@@ -3,7 +3,7 @@ using FoodOrdering.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace FoodOrdering.Controllers 
+namespace FoodOrdering.Controllers
 {
 
     [ApiController]
@@ -27,7 +27,7 @@ namespace FoodOrdering.Controllers
 
             return Ok(menu);
         }
-    
+
         //GET /api/menu/5
         [HttpGet("{id}")]
         public async Task<ActionResult<MenuItem>> GetMenuItem(int id)
@@ -63,6 +63,17 @@ namespace FoodOrdering.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        // HTTP POST Request
+        [HttpPost]
+        public async Task<ActionResult<MenuItem>> PostMenuItem(MenuItem menuItem)
+        {
+            _context.MenuItems.Add(menuItem);
+
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetMenuItem), new { id = menuItem.ID }, menuItem);
         }
     }
 }
