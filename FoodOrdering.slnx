@@ -1,3 +1,7 @@
 <Solution>
-  <Project Path="FoodOrdering/FoodOrdering.csproj" />
+  <Project Path="foodordering.client/foodordering.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="FoodOrdering/foodordering.server.csproj" />
 </Solution>
