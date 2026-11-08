@@ -28,7 +28,31 @@ function App() {
 
   return (
     <>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <table>
+      
+      <thead>
+        <tr>
+            <th>Navn</th>
+            <th>Pris</th>
+            <th>ID</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {data.map(item => (
+
+        <tr key={item.id}>
+            <td>{item.name}</td>
+            <td>{item.price}</td>
+            <td>{item.id}</td>    
+        </tr>
+
+        ))}
+
+      </tbody>
+
+      </table>
     </>
   )
 }
